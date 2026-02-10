@@ -1,31 +1,42 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import './App.css'
 
-
+import Inicio from './pages/Inicio'
+import Sistema from './pages/Sistema'
+import Arquivo from './pages/Arquivo'
+import Personagens from './pages/Personagens'
 
 function App() {
- 
-
   return (
-    <>
-      
+    <BrowserRouter>
       <header className="banner">
-        <h1>RPG — Operação Maré Cinza</h1>
+        <h1>RPG Operação Maré Cinza</h1>
 
         <nav className="tabs">
-            <button>Inicio</button>
-            <button>Sistema</button>
-            <button>Arquivo</button>
-            <button>Personagens</button>
-            
+          <NavLink to="/" end>
+            Inicio
+          </NavLink>
+          <NavLink to="/sistema">
+            Sistema
+          </NavLink>
+          <NavLink to="/arquivo">
+            Arquivo
+          </NavLink>
+          <NavLink to="/personagens">
+            Personagens
+          </NavLink>
         </nav>
       </header>
 
-      
       <main className="body">
-          <h2>Bem-vindo ao RPG — Operação Maré Cinza</h2>
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/sistema" element={<Sistema />} />
+          <Route path="/arquivo" element={<Arquivo />} />
+          <Route path="/personagens" element={<Personagens />} />
+        </Routes>
       </main>
-    </>
+    </BrowserRouter>
   )
 }
 

@@ -1,11 +1,11 @@
-/* RESET BÁSICO */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* GARANTE CENTRALIZAÇÃO REAL */
+
 html, body, #root {
   width: 100%;
   height: 100%;
@@ -14,13 +14,17 @@ html, body, #root {
   color: #e5e5e5;
 }
 
-/* BANNER / NAVBAR */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
 .banner {
   width: 100%;
   padding: 20px 0;
-
   background-color: #14141c;
-  border-bottom: 1px solid #2a2a3a;
 
   display: flex;
   flex-direction: column;
@@ -34,44 +38,65 @@ html, body, #root {
   letter-spacing: 1px;
 }
 
+.tabs {
+  display: flex;
+  gap: 16px;
+}
 
-.tabs button {
-
+.tabs a {
+  text-decoration: none;
   color: #cfcfe6;
   font-size: 1rem;
-  cursor: pointer;
 
-  padding: 8px 16px;
-  margin: 0 8px;
-
-  transition: all 0.3s ease;
+  padding: 8px 18px;
+  border-radius: 4px;
+  transition: all 0.25s ease;
 }
 
-.tabs button:hover {
+.tabs a:hover,
+.tabs a.active {
   color: #ffffff;
   background-color: #5c7cfa;
 }
 
-.tabs button:focus {
+.tabs a:focus {
   outline: none;
-  color: #ffffff;
-  background-color: #5c7cfa;
 }
+
 
 .body {
-  height: calc(100vh - 140px);
+  flex: 1; 
   width: 100%;
+  background-color: #0e0e12;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
 
-  text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-.body h2 {
-  font-size: 1.4rem;
-  font-weight: 400;
-  max-width: 600px;
+
+.page {
+  width: 100%;
+  max-width: 800px;
+}
+
+
+.page h2 {
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.page p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: #bdbddb;
+}
+.mapa-instalacao {
+  max-width: 100%;  /
+  height: auto;    
+  display: block;   
+  margin: 0 auto;   
 }
