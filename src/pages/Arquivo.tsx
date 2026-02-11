@@ -58,7 +58,7 @@ export default function Arquivo() {
         </ul>
 
         <p>
-          <strong>Observação:</strong> Todos os Anômalos apresentavam força física
+          <strong>Observação:</strong> Todos os Anômalos apresentam força física
           acima do padrão humano, independentemente da habilidade primária. A
           idade refere-se ao dia do acidente.
         </p>

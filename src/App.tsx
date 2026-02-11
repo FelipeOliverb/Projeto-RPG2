@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
-import './App.css'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import './App.css';
 
-import Inicio from './pages/Inicio'
-import Sistema from './pages/Sistema'
-import Arquivo from './pages/Arquivo'
-import Personagens from './pages/Personagens'
+import Inicio from './pages/Inicio';
+import Sistema from './pages/Sistema';
+import Arquivo from './pages/Arquivo';
+import Personagens from './pages/Personagens';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
         </Routes>
       </main>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

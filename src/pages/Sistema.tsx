@@ -52,38 +52,38 @@ export default function Sistema() {
 
       <ul>
         <li>Após uma falha, o jogador declara o uso de Reforço.</li>
-        <li>Rola novamente 1d100.</li>
+        
         <li>
-          O novo teste soma o atributo original com parte do atributo Reforçar.
+          O novo teste utiliza o valor do atributo original somado a um número aleatório baseado na metade do atributo Reforçar.
         </li>
       </ul>
 
       <p>
         <strong>Cálculo do Reforço:</strong>
         <br />
-        Chance com Reforço = SA + (SR ÷ 2) + (DR ÷ 2)
+        Chance com Reforço = SA + D(SR÷2)
       </p>
 
       <p>
         <strong>Onde:</strong>
         <br />
-        SA = Atributo usado
+        SA = Status do atributo usado
         <br />
-        SR = Reforçar
+        SR = Status do Reforço
         <br />
-        DR = Resultado do d100
+        D = Dado do Reforço
       </p>
 
       <p>
         <strong>Exemplo:</strong>
         <br />
-        Agilidade (SA): 180
+        Atributo Agilidade (SA): 180
         <br />
-        Reforçar (SR): 120
+        Atributo Reforçar (SR): 120 ÷ 2 = 60
         <br />
-        Dado (DR): 60
+        Dado (D60): 20
         <br />
-        <strong>Resultado Final: 270</strong>
+        <strong>Resultado Final: 180 + 20 = 200</strong>
       </p>
 
       <p>
