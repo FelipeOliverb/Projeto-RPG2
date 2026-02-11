@@ -3,5 +3,6 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Projeto-RPG2/", // ESSENCIAL para GitHub Pages
+  // ESSENCIAL para GitHub Pages
+  base: "/Projeto-RPG2/",
 });
