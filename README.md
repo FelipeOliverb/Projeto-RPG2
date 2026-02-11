@@ -74,6 +74,3 @@ export default defineConfig([
   },
 ])
 ```
-=======
-# Projeto-RPG2
->>>>>>> 4d76d62dd8cedf0d6a4f62fd2cfedeb5f51a779a
