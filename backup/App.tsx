@@ -5,7 +5,6 @@ import Inicio from './pages/Inicio';
 import Sistema from './pages/Sistema';
 import Arquivo from './pages/Arquivo';
 import Personagens from './pages/Personagens';
-import Anomalos from './pages/Anomalos';
 
 function App() {
   return (
@@ -17,24 +16,15 @@ function App() {
           <NavLink to="/" end>
             Inicio
           </NavLink>
-
           <NavLink to="/sistema">
             Sistema
           </NavLink>
-
           <NavLink to="/arquivo">
             Arquivo
           </NavLink>
-
-          <NavLink to="/anomalos">
-            Anômalos
-          </NavLink>
-
           <NavLink to="/personagens">
             Personagens
           </NavLink>
-
-          
         </nav>
       </header>
 
@@ -44,7 +34,6 @@ function App() {
           <Route path="/sistema" element={<Sistema />} />
           <Route path="/arquivo" element={<Arquivo />} />
           <Route path="/personagens" element={<Personagens />} />
-          <Route path="/anomalos" element={<Anomalos />} />
         </Routes>
       </main>
     </BrowserRouter>

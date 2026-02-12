@@ -15,7 +15,7 @@ export default function Arquivo() {
         <p><strong>Data de Ativação:</strong> 1998</p>
         <p><strong>Data do Incidente:</strong> Não divulgada</p>
       </section>
-      <hr />
+
       <section>
         <h3>1. Visão Geral da Instalação</h3>
         <p>
