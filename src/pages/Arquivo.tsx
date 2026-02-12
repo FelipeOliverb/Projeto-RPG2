@@ -87,7 +87,7 @@ export default function Arquivo() {
       <section>
         <h3>3. Setores da Base</h3>
         <img
-            src="/Projeto-RPG2/mapa.jpg"
+            src="/Projeto-RPG2/Mapa.png"
             alt="Mapa da Instalação Maré Cinza"
             className="mapa-instalacao"
           />
