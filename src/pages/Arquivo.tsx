@@ -1,3 +1,4 @@
+import Mapa from '../assets/Mapa.png';
 export default function Arquivo() {
   return (
     <div className="page">
@@ -87,7 +88,7 @@ export default function Arquivo() {
       <section>
         <h3>3. Setores da Base</h3>
         <img
-            src="/Projeto-RPG2/assets/Mapa.png"
+            src={Mapa}
             alt="Mapa da Instalação Maré Cinza"
             className="mapa-instalacao"
           />
