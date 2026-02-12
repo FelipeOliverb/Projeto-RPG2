@@ -3,7 +3,6 @@ import ArquivoPDF from "../assets/Arquivo.pdf";
 import BasicoPDF from "../assets/Basico.pdf";
 import FichaPDF from "../assets/Ficha.pdf";
 import SistemaPDF from "../assets/Sistema.pdf";
-import ArquivoRTF from "../assets/Arquivo.pdf";
 
 export default function Inicio() {
   return (
