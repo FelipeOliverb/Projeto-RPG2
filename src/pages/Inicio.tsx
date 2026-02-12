@@ -1,3 +1,10 @@
+import AnomalosPDF from "../assets/Anomalos.pdf";
+import ArquivoPDF from "../assets/Arquivo.pdf";
+import BasicoPDF from "../assets/Basico.pdf";
+import FichaPDF from "../assets/Ficha.pdf";
+import SistemaPDF from "../assets/Sistema.pdf";
+import ArquivoRTF from "../assets/Arquivo.pdf";
+
 export default function Inicio() {
   return (
     <div className="page">
@@ -164,6 +171,18 @@ export default function Inicio() {
         abandono. Ainda assim, a ausência de evidências materiais e de explicações
         técnicas plausíveis permanece sem resposta até os dias atuais.
       </p>
+
+      <div className="download">
+      <h3>Downloads </h3>
+      <p>Baixe os arquivos Offline:</p>
+      <ul>
+        <li><a href={AnomalosPDF} download>Sobre os Anômalos</a></li>
+        <li><a href={ArquivoPDF} download>Arquivo Instalação Maré Cinza</a></li>
+        <li><a href={BasicoPDF} download>História Inicial</a></li>
+        <li><a href={FichaPDF} download>Ficha</a></li>
+        <li><a href={SistemaPDF} download>Sistema de Regras</a></li>
+      </ul>
+      </div>
     </div>
-  )
+  );
 }
