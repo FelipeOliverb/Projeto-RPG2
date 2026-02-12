@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import VetorImg from "./imagens/Vetor.png"; // ✅ Importando a imagem do Pedro
+import VetorImg from "./imagens/Vetor.png"; // ✅ Importando a imagem
 
 export default function Pedro() {
+  // =============================
   // ATRIBUTOS BASE
+  // =============================
   const atributos = {
     forca: 130,
     agilidade: 160,
@@ -13,16 +15,25 @@ export default function Pedro() {
     controle: 270
   };
 
-  const resistenciaFinal = atributos.resistencia * 1.5;
+  // =============================
+  // CÁLCULOS BASE
+  // =============================
+  const resistenciaFinal = atributos.resistencia * 1.5; // +50% de resistência
   const vidaMax = Math.floor(resistenciaFinal * 2);
-  const cargaMax = Math.floor(150 + atributos.resistencia / 2);
+  const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2);
 
+  // =============================
+  // ESTADOS DINÂMICOS
+  // =============================
   const [vida, setVida] = useState(vidaMax);
   const [carga, setCarga] = useState(cargaMax);
   const [atributoSelecionado, setAtributoSelecionado] = useState("forca");
   const [resultado, setResultado] = useState<string | null>(null);
   const [valorCustom, setValorCustom] = useState(10);
 
+  // =============================
+  // CONTROLE VIDA
+  // =============================
   function alterarVida(valor: number) {
     setVida(prev => {
       const novo = prev + valor;
@@ -32,6 +43,9 @@ export default function Pedro() {
     });
   }
 
+  // =============================
+  // CONTROLE CARGA
+  // =============================
   function alterarCarga(valor: number) {
     setCarga(prev => {
       const novo = prev + valor;
@@ -41,6 +55,9 @@ export default function Pedro() {
     });
   }
 
+  // =============================
+  // ROLAGEM NORMAL
+  // =============================
   function rolarNormal() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const d100 = Math.floor(Math.random() * 100) + 1;
@@ -48,6 +65,9 @@ export default function Pedro() {
     setResultado(`Normal → ${valorAtributo} + (${d100}/2 = ${metade}) = ${valorAtributo + metade}`);
   }
 
+  // =============================
+  // ROLAGEM COM REFORÇO
+  // =============================
   function rolarReforco() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const dadoMax = Math.floor(atributos.reforcar / 2);
@@ -59,9 +79,12 @@ export default function Pedro() {
     setResultado(`Reforço → ${valorAtributo} + (d${dadoMax} = ${dado}) = ${valorAtributo + dado}`);
   }
 
+  // =============================
+  // RENDER
+  // =============================
   return (
     <div className="personagem-completo">
-      <h2 style={{ textAlign: "center" }}>Vitor Almeida (VETOR)</h2>
+      <h2>Vitor Almeida (VETOR)</h2>
 
       <div className="foto-personagem">
         <img src={VetorImg} alt="Vitor Almeida (VETOR)" />
@@ -77,9 +100,9 @@ export default function Pedro() {
         </div>
 
         <ul className="atributos-grid">
-          <li>Força: {atributos.forca}</li>
+          <li>Força: {atributos.forca*1.5}</li>
           <li>Agilidade: {atributos.agilidade}</li>
-          <li>Resistência: {atributos.resistencia}</li>
+          <li>Resistência: {atributos.resistencia*1.5}</li>
           <li>Mira: {atributos.mira}</li>
           <li>Reforçar: {atributos.reforcar}</li>
           <li>Controle: {atributos.controle}</li>

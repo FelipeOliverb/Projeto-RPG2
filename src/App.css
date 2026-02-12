@@ -178,6 +178,9 @@ em {
   margin-top: 6px;
 }
 
+.personagem-completo h2{
+  text-align: center;
+}
 
 /* CALCULOS */
 .page h4 + div {

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import NanaImg from "./imagens/Nana.png"; 
 
 export default function Nana() {
- 
+
+  // =============================
   // ATRIBUTOS BASE
+  // =============================
   const atributos = {
     forca: 140,
     agilidade: 200,
@@ -14,16 +16,25 @@ export default function Nana() {
     controle: 110
   };
 
-  const resistenciaFinal = atributos.resistencia * 1.5;
+  // =============================
+  // CÁLCULOS BASE
+  // =============================
+  const resistenciaFinal = atributos.resistencia * 1.5; // +50% de resistência
   const vidaMax = Math.floor(resistenciaFinal * 2);
-  const cargaMax = Math.floor(150 + atributos.resistencia / 2);
+  const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2); // agora usa resistência final
 
+  // =============================
+  // ESTADOS DINÂMICOS
+  // =============================
   const [vida, setVida] = useState(vidaMax);
   const [carga, setCarga] = useState(cargaMax);
   const [atributoSelecionado, setAtributoSelecionado] = useState("forca");
   const [resultado, setResultado] = useState<string | null>(null);
   const [valorCustom, setValorCustom] = useState(10);
 
+  // =============================
+  // CONTROLE VIDA
+  // =============================
   function alterarVida(valor: number) {
     setVida(prev => {
       const novo = prev + valor;
@@ -33,6 +44,9 @@ export default function Nana() {
     });
   }
 
+  // =============================
+  // CONTROLE CARGA
+  // =============================
   function alterarCarga(valor: number) {
     setCarga(prev => {
       const novo = prev + valor;
@@ -42,6 +56,9 @@ export default function Nana() {
     });
   }
 
+  // =============================
+  // ROLAGEM NORMAL
+  // =============================
   function rolarNormal() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const d100 = Math.floor(Math.random() * 100) + 1;
@@ -49,6 +66,9 @@ export default function Nana() {
     setResultado(`Normal → ${valorAtributo} + (${d100}/2 = ${metade}) = ${valorAtributo + metade}`);
   }
 
+  // =============================
+  // ROLAGEM COM REFORÇO
+  // =============================
   function rolarReforco() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const dadoMax = Math.floor(atributos.reforcar / 2);
@@ -62,27 +82,25 @@ export default function Nana() {
 
   return (
     <div className="personagem-completo">
-      {/* NOME */}
-      <h2 style={{ textAlign: "center" }}>Nana (Eclipse)</h2>
+      <h2>Nana (Eclipse)</h2>
 
       <div className="foto-personagem">
         <img src={NanaImg} alt="Nana (Eclipse)" />
       </div>
 
-      {/* FICHA */}
       <div className="personagem-ficha">
         <Link to="/personagens" className="voltar-btn">← Voltar</Link>
 
         <div className="info-bloco">
           <p><strong>Vida:</strong> {vida} / {vidaMax}</p>
           <p><strong>Carga Anômala:</strong> {carga} / {cargaMax}</p>
-          <p><strong>Habilidade:</strong> ---- </p>
+          <p><strong>Habilidade:</strong> ----</p>
         </div>
 
         <ul className="atributos-grid">
           <li>Força: {atributos.forca}</li>
           <li>Agilidade: {atributos.agilidade}</li>
-          <li>Resistência: {atributos.resistencia}</li>
+          <li>Resistência: {resistenciaFinal}</li> {/* mostra resistência com bônus */}
           <li>Mira: {atributos.mira}</li>
           <li>Reforçar: {atributos.reforcar}</li>
           <li>Controle: {atributos.controle}</li>

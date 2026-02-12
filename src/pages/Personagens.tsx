@@ -114,7 +114,7 @@ export default function Personagens() {
 
   // CARGA
   const calcularCargaAnomala = (personagem: Personagem): number => {
-    return personagem.atributos.ControleAnomalo + personagem.atributos.Resistencia / 2;
+    return personagem.atributos.ControleAnomalo + (personagem.atributos.Resistencia*1.5) / 2;
   };
 
   // TESTE NORMAL --------------------------------
