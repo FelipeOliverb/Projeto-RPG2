@@ -173,7 +173,7 @@ export default function Inicio() {
 
       <div className="download">
       <h3>Downloads </h3>
-      <p>Baixe os arquivos Offline:</p>
+      <p>Baixe os arquivos para ver Offline:</p>
       <ul>
         <li><a href={AnomalosPDF} download>Sobre os Anômalos</a></li>
         <li><a href={ArquivoPDF} download>Arquivo Instalação Maré Cinza</a></li>
