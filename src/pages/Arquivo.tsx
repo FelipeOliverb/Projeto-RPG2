@@ -1,4 +1,5 @@
-import Mapa from '../assets/Mapa.png';
+import Mapa from "../assets/Mapa.png";
+
 export default function Arquivo() {
   return (
     <div className="page">
@@ -23,17 +24,14 @@ export default function Arquivo() {
           pesquisa avançada e contenção de Anômalos expostos a altas concentrações
           do Composto-A.
         </p>
-
         <p>
           Diferente de outras bases do Projeto Atlas, Maré Cinza operava com
           protocolos experimentais ampliados, focados na interação prolongada
           entre Anômalos, ambiente marinho e sistemas de contenção energética.
         </p>
-
         <p>
           A base era parcialmente subterrânea, integrada à falésia costeira, com
-          setores abaixo do nível do mar. Sua localização remota visava reduzir
-          interferência externa e facilitar o descarte de material classificado.
+          setores abaixo do nível do mar.
         </p>
       </section>
 
@@ -44,24 +42,22 @@ export default function Arquivo() {
         <p><strong>Total registrado:</strong> 12</p>
 
         <ul>
-          <li>A-01 — 9 anos — Instável — Manipulação térmica localizada</li>
-          <li>A-02 — 14 anos — Moderada — Força física elevada</li>
-          <li>A-03 — 11 anos — Instável — Alteração de densidade corporal</li>
-          <li>A-04 — 17 anos — Alta — Emissão eletromagnética</li>
-          <li>A-05 — 6 anos — Crítica — Distúrbios espaciais de curto alcance</li>
-          <li>A-06 — 13 anos — Moderada — Regeneração acelerada</li>
-          <li>A-07 — 15 anos — Alta — Controle parcial de fluidos</li>
-          <li>A-08 — 8 anos — Instável — Influência neural empática</li>
-          <li>A-09 — 19 anos — Crítica — Amplificação de energia do Composto-A</li>
-          <li>A-10 — 12 anos — Moderada — Camuflagem orgânica</li>
-          <li>A-11 — 10 anos — Instável — Vibração estrutural</li>
-          <li>A-12 — 16 anos — Alta — Projeção cinética</li>
+          <li>A-01 — 9 anos — Manipulação térmica localizada</li>
+          <li>A-02 — 14 anos — Força física elevada</li>
+          <li>A-03 — 11 anos — Alteração de densidade corporal</li>
+          <li>A-04 — 17 anos — Emissão eletromagnética</li>
+          <li>A-05 — 6 anos — Distúrbios espaciais</li>
+          <li>A-06 — 13 anos — Regeneração acelerada</li>
+          <li>A-07 — 15 anos — Controle parcial de fluidos</li>
+          <li>A-08 — 8 anos — Influência neural empática</li>
+          <li>A-09 — 19 anos — Amplificação de energia</li>
+          <li>A-10 — 12 anos — Camuflagem orgânica</li>
+          <li>A-11 — 10 anos — Vibração estrutural</li>
+          <li>A-12 — 16 anos — Projeção cinética</li>
         </ul>
 
         <p>
-          <strong>Observação:</strong> Todos os Anômalos apresentam força física
-          acima do padrão humano, independentemente da habilidade primária. A
-          idade refere-se ao dia do acidente.
+          <strong>Observação:</strong> Todos apresentam força acima do padrão humano.
         </p>
 
         <h4>2.2 Pessoal Científico</h4>
@@ -72,33 +68,37 @@ export default function Arquivo() {
           <li>Dra. Marina Kovalchuk — Bioengenharia</li>
           <li>Dr. Pavel Mirov — Energia e Contenção</li>
           <li>Dra. Yelena Sokolova — Psicologia Anômala</li>
-          <li>14 técnicos e pesquisadores auxiliares (identidades suprimidas)</li>
+          <li>14 técnicos auxiliares</li>
         </ul>
 
         <h4>2.3 Segurança</h4>
-        <p><strong>Efetivo registrado:</strong> 22 agentes armados</p>
-
-        <ul>
-          <li>Segurança interna</li>
-          <li>Monitoramento de celas</li>
-          <li>Resposta a incidentes</li>
-        </ul>
+        <p><strong>Efetivo:</strong> 22 agentes armados</p>
       </section>
 
       <section>
         <h3>3. Setores da Base</h3>
-        <img
+
+        {/* IMAGEM CORRIGIDA PARA VITE + GH PAGES */}
+        <div style={{ textAlign: "center", margin: "25px 0" }}>
+          <img
             src={Mapa}
             alt="Mapa da Instalação Maré Cinza"
-            className="mapa-instalacao"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: "10px",
+              boxShadow: "0 0 15px rgba(0,0,0,0.5)"
+            }}
           />
+        </div>
+
         <ul>
-          <li>Entrada Costeira e Plataforma de Acesso</li>
+          <li>Entrada Costeira</li>
           <li>Corredor Principal Inundável</li>
           <li>Área Administrativa</li>
-          <li>Sala de Segurança e Monitoramento</li>
-          <li>Alas de Celas (Níveis 1 e 2)</li>
-          <li>Enfermaria e Laboratório Clínico</li>
+          <li>Sala de Segurança</li>
+          <li>Alas de Celas</li>
+          <li>Enfermaria</li>
           <li>Laboratórios de Pesquisa</li>
           <li>Núcleo de Contenção Energética</li>
           <li>Câmara Submersa Experimental</li>
@@ -106,96 +106,33 @@ export default function Arquivo() {
       </section>
 
       <section>
-        <h3>4. Protocolos Especiais</h3>
-        <ul>
-          <li>Proibição de evacuação total sem autorização central</li>
-          <li>
-            Integração direta entre sistemas vitais da base e o Núcleo de Contenção
-          </li>
-          <li>
-            Exposição prolongada dos Anômalos ao ambiente experimental
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>5. Registros de Incidentes</h3>
-        <p><strong>Últimos eventos registrados:</strong></p>
-
-        <ul>
-          <li>Oscilações anormais no Núcleo de Contenção</li>
-          <li>Alterações comportamentais coletivas entre os Anômalos</li>
-          <li>Falhas recorrentes nos sistemas de energia</li>
-          <li>Relatos de vozes nos dutos e paredes</li>
-        </ul>
-
-        <p>
-          <strong>Trecho de relatório interno:</strong><br />
-          “Os sinais não estão vindo de um único sujeito. A base inteira está
-          reagindo.”
-        </p>
-      </section>
-
-      <section>
-        <h3>6. Últimas Transmissões</h3>
-        <p><strong>Registro final (corrompido):</strong></p>
-
+        <h3>4. Registros Finais</h3>
+        <p><strong>Trecho final:</strong></p>
         <p>
           “Eles não estão mais contidos. Não estão mortos. O mar não está do lado
           de fora. Ele entrou.”
         </p>
+        <p><em>[Interferência — sinal perdido]</em></p>
+      </section>
 
-        <p>[Interferência — sinal perdido]</p>
-
+      <section>
+        <h3>5. Status Atual</h3>
         <p>
-          Após essa transmissão, a Instalação Maré Cinza cessou toda comunicação.
+          A Instalação Maré Cinza é considerada oficialmente abandonada.
+        </p>
+        <p>
+          <strong>Classificação interna:</strong> Zona Perdida — Acesso proibido.
         </p>
       </section>
 
       <section>
-        <h3>7. Operações de Investigação Posteriores</h3>
+        <h3>Observação Final</h3>
         <p>
-          Três equipes de investigação independentes foram enviadas ao local após
-          o silêncio da base.
+          A ausência de corpos ou sinais de destruição compatíveis sugere que o
+          evento permanece ativo.
         </p>
-
-        <ul>
-          <li>Equipe Alfa: desaparecida</li>
-          <li>Equipe Beta: desaparecida</li>
-          <li>Equipe Gama: desaparecida</li>
-        </ul>
-
-        <p>
-          Nenhum membro foi encontrado. Nenhum pedido de socorro foi registrado.
-        </p>
-      </section>
-
-      <section>
-        <h3>8. Status Atual</h3>
-        <p>
-          A Instalação Maré Cinza é considerada oficialmente abandonada devido a
-          falha estrutural severa.
-        </p>
-
-        <p>
-          <strong>Classificação real interna:</strong> Zona Perdida — Acesso não
-          autorizado proibido.
-        </p>
-      </section>
-
-      <section>
-        <h3>9. Observação Final</h3>
-        <p>
-          A ausência de corpos, registros conclusivos ou sinais de destruição
-          compatíveis sugere que o evento ocorrido na Instalação Maré Cinza não se
-          tratou de evacuação, acidente convencional ou motim.
-        </p>
-
-        <p>
-          <strong>O que ocorreu no local permanece ativo.</strong>
-        </p>
+        <p><strong>O que ocorreu no local ainda não terminou.</strong></p>
       </section>
     </div>
-  )
+  );
 }
-
