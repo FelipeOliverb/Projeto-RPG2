@@ -133,32 +133,68 @@ em {
 /* ============================= */
 
 .ficha {
-  background-color: #14141c;
+  background: linear-gradient(145deg, #14141c, #111118);
   border: 1px solid #2c2c38;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
+/* Hover elegante */
+.ficha:hover {
+  border-color: #5c7cfa;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Título */
 .ficha h3 {
+  font-size: 1.4rem;
   margin-bottom: 12px;
-  font-size: 1.3rem;
+  color: #ffffff;
 }
 
+/* Informações básicas */
 .ficha p {
-  margin-bottom: 8px;
-  color: #cfcfe6;
+  margin-bottom: 6px;
+  color: #bfc4ff;
+  font-size: 0.95rem;
 }
 
+/* Separação de seção */
+.ficha h4 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #7c92ff;
+  border-bottom: 1px solid #2c2c38;
+  padding-bottom: 4px;
+}
+
+/* Lista de atributos */
 .ficha ul {
   list-style: none;
-  margin-bottom: 12px;
+  padding-left: 0;
+  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 6px 12px;
 }
 
 .ficha ul li {
-  margin-bottom: 4px;
+  background-color: #1a1a24;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #d6d6ff;
 }
 
+/* Vida e Carga */
+.ficha > p:last-of-type {
+  margin-top: 6px;
+}
 
 /* ============================= */
 /* ÁREA DOS CÁLCULOS (horizontal com caixa) */
@@ -221,7 +257,7 @@ em {
 
 
 /* ============================= */
-/* Resultado (caixa como antes) */
+/* Resultado */
 /* ============================= */
 
 .resultado {
@@ -233,6 +269,12 @@ em {
   margin-bottom: 20px;
   color: #cfcfe6;
 }
+
+.dado-azul {
+  color: #1e90ff;
+  font-weight: bold;
+}
+
 
 .resultado p {
   margin-bottom: 6px;
@@ -273,6 +315,230 @@ em {
 }
 
 /* ============================= */
-/* Tabelas */
+/* FICHA INDIVIDUAL */
 /* ============================= */
 
+.personagem-ficha {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 35px;
+  background: linear-gradient(145deg, #0f0f17, #1b1b28);
+  border-radius: 18px;
+  border: 1px solid #2a2a35;
+  box-shadow: 0 0 40px rgba(92, 124, 250, 0.12);
+  color: #e6e6f0;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "titulo titulo"
+    "info atributos"
+    "controle controle";
+  gap: 30px;
+
+  position: relative;
+}
+
+/* ================= TÍTULO ================= */
+
+.personagem-ficha h2 {
+  grid-area: titulo;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(92, 124, 250, 0.4);
+}
+
+/* ================= INFO BLOCO ================= */
+
+.info-bloco {
+  grid-area: info;
+  background: #171722;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #2a2a35;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1.05rem;
+}
+
+.info-bloco strong {
+  color: #5c7cfa;
+}
+
+/* ================= ATRIBUTOS ================= */
+
+.atributos-grid {
+  grid-area: atributos;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.atributos-grid li {
+  background: #161621;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #2a2a35;
+  transition: 0.25s ease;
+  font-weight: 500;
+}
+
+.atributos-grid li:hover {
+  border-color: #5c7cfa;
+  background-color: #202033;
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(92, 124, 250, 0.2);
+}
+
+.mais:hover {
+  background-color: #4caf50;
+  font-weight: bold;
+}
+/* ================= BLOCO CONTROLE ================= */
+
+.controle-bloco {
+  grid-area: controle;
+  background: #171722;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #2a2a35;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controle-bloco h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* ================= SELECT ================= */
+
+select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #2a2a35;
+  background-color: #1e1e2c;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+select:focus {
+  border-color: #5c7cfa;
+  box-shadow: 0 0 8px rgba(92, 124, 250, 0.4);
+}
+
+/* ================= BOTÕES ================= */
+
+.botoes-controle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #2a2a35;
+  background: #1e1e2c;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  background: #5c7cfa;
+  border-color: #5c7cfa;
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(92, 124, 250, 0.4);
+}
+
+/* ================= INPUT NUMBER ================= */
+
+input[type="number"] {
+  width: 90px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #2a2a35;
+  background-color: #1e1e2c;
+  color: white;
+  text-align: center;
+  outline: none;
+  transition: 0.2s;
+}
+
+input[type="number"]:focus {
+  border-color: #5c7cfa;
+  box-shadow: 0 0 8px rgba(92, 124, 250, 0.4);
+}
+
+/* ================= RESULTADO DO DADO ================= */
+
+.resultado-dado {
+  background: #14141d;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #5c7cfa;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  animation: brilho 0.3s ease-in-out;
+}
+
+@keyframes brilho {
+  from {
+    box-shadow: 0 0 0 rgba(92, 124, 250, 0);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(92, 124, 250, 0.5);
+  }
+}
+
+/* ================= BOTÃO VOLTAR ================= */
+
+.voltar-btn {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  text-decoration: none;
+  color: #8fa6ff;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.voltar-btn:hover {
+  color: white;
+  transform: translateX(-5px);
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media (max-width: 950px) {
+  .personagem-ficha {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "titulo"
+      "info"
+      "atributos"
+      "controle";
+  }
+
+  .atributos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .botoes-controle {
+    justify-content: center;
+  }
+}

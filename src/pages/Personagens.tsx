@@ -1,15 +1,16 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 // =========================
 // Tipagens
 // =========================
 type Atributos = {
-  Forca: number;
+  Força: number;
   Agilidade: number;
   Resistencia: number;
   Mira: number;
-  Reforcar: number;
+  Reforçar: number;
   ControleAnomalo: number;
 };
 
@@ -19,8 +20,10 @@ type Personagem = {
   codinome: string;
   idade: number;
   status: string;
+  habilidade: string;
   atributos: Atributos;
   bonusAnomalo: boolean;
+  rota: string;
 };
 
 type ResultadoTeste = {
@@ -49,8 +52,10 @@ export default function Personagens() {
       codinome: "Retalho",
       idade: 47,
       status: "Anômalo",
-      atributos: { Forca: 180, Agilidade: 140, Resistencia: 220, Mira: 190, Reforcar: 120, ControleAnomalo: 150 },
+      habilidade: "Fator de Cura",
+      atributos: { Força: 180, Agilidade: 140, Resistencia: 220, Mira: 190, Reforçar: 120, ControleAnomalo: 150 },
       bonusAnomalo: true,
+      rota: "/bryan",
     },
     {
       player: "Letícia",
@@ -58,8 +63,10 @@ export default function Personagens() {
       codinome: "Nyx",
       idade: 30,
       status: "Anômalo",
-      atributos: { Forca: 120, Agilidade: 180, Resistencia: 150, Mira: 200, Reforcar: 100, ControleAnomalo: 90 },
+      habilidade: "Electrificação",
+      atributos: { Força: 120, Agilidade: 180, Resistencia: 150, Mira: 200, Reforçar: 100, ControleAnomalo: 90 },
       bonusAnomalo: true,
+      rota: "/leticia",
     },
     {
       player: "Pedro",
@@ -67,8 +74,10 @@ export default function Personagens() {
       codinome: "Yuuki",
       idade: 35,
       status: "Anômalo",
-      atributos: { Forca: 160, Agilidade: 170, Resistencia: 180, Mira: 150, Reforcar: 140, ControleAnomalo: 130 },
+      habilidade: "Controle de Vetores",
+      atributos: { Força: 160, Agilidade: 170, Resistencia: 180, Mira: 150, Reforçar: 140, ControleAnomalo: 130 },
       bonusAnomalo: true,
+      rota: "/pedro",
     },
     {
       player: "Nana",
@@ -76,20 +85,22 @@ export default function Personagens() {
       codinome: "Pipi",
       idade: 28,
       status: "Anômalo",
-      atributos: { Forca: 110, Agilidade: 150, Resistencia: 130, Mira: 160, Reforcar: 100, ControleAnomalo: 120 },
+      habilidade: "--",
+      atributos: { Força: 110, Agilidade: 150, Resistencia: 130, Mira: 160, Reforçar: 100, ControleAnomalo: 120 },
       bonusAnomalo: true,
+      rota: "/nana",
     },
   ]);
 
-  const [testeInput, setTesteInput] = useState<{ personagemIndex: number; atributo: keyof Atributos; VN: number }>({
+  const [testeInput, setTesteInput] = useState({
     personagemIndex: 0,
-    atributo: "Forca",
+    atributo: "Força" as keyof Atributos,
     VN: 250,
   });
 
-  const [reforcoInput, setReforcoInput] = useState<{ personagemIndex: number; atributo: keyof Atributos }>({
+  const [reforcoInput, setReforcoInput] = useState({
     personagemIndex: 0,
-    atributo: "Agilidade",
+    atributo: "Agilidade" as keyof Atributos,
   });
 
   const [resultadoTeste, setResultadoTeste] = useState<ResultadoTeste | null>(null);
@@ -105,32 +116,35 @@ export default function Personagens() {
   };
 
   // =========================
-  // CARGA ANÔMALA MÁXIMA
+  // CARGA
   // =========================
   const calcularCargaAnomala = (personagem: Personagem): number => {
-    const controle = personagem.atributos.ControleAnomalo || 0;
-    const resistencia = personagem.atributos.Resistencia || 0;
-    return controle + resistencia / 2;
+    return personagem.atributos.ControleAnomalo + personagem.atributos.Resistencia / 2;
   };
 
   // =========================
   // TESTE NORMAL
   // =========================
-  const testeAtributo = (personagem: Personagem, atributo: keyof Atributos, VN: number): Omit<ResultadoTeste, "personagem"> => {
+  const testeAtributo = (
+    personagem: Personagem,
+    atributo: keyof Atributos,
+    VN: number
+  ): Omit<ResultadoTeste, "personagem"> => {
     const dado = Math.floor(Math.random() * 100) + 1;
-    const valorBase = personagem.atributos[atributo] || 0;
+    const valorBase = personagem.atributos[atributo];
 
-    let valorComBonus = valorBase;
     let valorFinal: number;
     let formulaElement: ReactNode;
 
-    if (personagem.bonusAnomalo && (atributo === "Forca" || atributo === "Resistencia")) {
-      valorComBonus = valorBase * 1.5;
+    if (personagem.bonusAnomalo && (atributo === "Força" || atributo === "Resistencia")) {
+      const valorComBonus = valorBase * 1.5;
       valorFinal = valorComBonus + dado / 2;
 
       formulaElement = (
         <>
-          {atributo} base = {valorBase} → +50% bônus = {valorComBonus} + Dado/2 (<strong>{dado}</strong>/2 = {(dado / 2).toFixed(2)}) = {valorFinal.toFixed(2)}
+          {atributo} base {valorBase} → +50% ={" "}
+          {valorComBonus} + ({dado}/2 <strong>{dado / 2}</strong>) ={" "}
+          <strong>{valorFinal.toFixed(2)}</strong>
         </>
       );
     } else {
@@ -138,7 +152,8 @@ export default function Personagens() {
 
       formulaElement = (
         <>
-          {atributo} base = {valorBase} + Dado/2 (<strong>{dado}</strong>/2 = {(dado / 2).toFixed(2)}) = {valorFinal.toFixed(2)}
+          {atributo} base <strong>{valorBase}</strong> + (Dado/2 {dado}/2) ={" "}
+          <strong>{valorFinal.toFixed(2)}</strong>
         </>
       );
     }
@@ -149,32 +164,28 @@ export default function Personagens() {
   // =========================
   // REFORÇO
   // =========================
-  const usarReforco = (personagem: Personagem, atributo: keyof Atributos): Omit<ResultadoReforco, "personagem"> => {
-    const valorBase = personagem.atributos[atributo] || 0;
-    const valorReforco = personagem.atributos.Reforcar || 0;
+  const usarReforco = (
+    personagem: Personagem,
+    atributo: keyof Atributos
+  ): Omit<ResultadoReforco, "personagem"> => {
+    const valorBase = personagem.atributos[atributo];
+    const valorReforco = personagem.atributos.Reforçar;
 
     const dadoMaximo = Math.floor(valorReforco / 2);
     const dadoReforco = Math.floor(Math.random() * dadoMaximo) + 1;
 
     let SA = valorBase;
-    let bonusAplicado = false;
 
-    if (personagem.bonusAnomalo && (atributo === "Forca" || atributo === "Resistencia")) {
+    if (personagem.bonusAnomalo && (atributo === "Força" || atributo === "Resistencia")) {
       SA = valorBase * 1.5;
-      bonusAplicado = true;
     }
 
     const chanceFinal = SA + dadoReforco;
 
     const formulaElement = (
       <>
-        SA = {valorBase}
-        {bonusAplicado && ` (+50% bônus = ${SA.toFixed(2)})`}
-        {" + d("}
-        {dadoMaximo}
-        {") → "}
-        <strong>{dadoReforco}</strong>
-        {" = "}
+        SA {SA.toFixed(2)} + d({dadoMaximo}) →{" "}
+        <strong>{dadoReforco}</strong> ={" "}
         {chanceFinal.toFixed(2)}
       </>
     );
@@ -182,77 +193,72 @@ export default function Personagens() {
     return { dadoReforco, chanceFinal, formulaElement };
   };
 
-  // =========================
-  // JSX
-  // =========================
   return (
     <div className="page">
       <h2>Personagens</h2>
       <p>Fichas, status, dados e controle dos agentes.</p>
 
       {personagens.map((personagem, index) => (
-        <div key={index} className="ficha">
-          <h3>
-            {personagem.nome} ({personagem.codinome})
-          </h3>
-          <p>Player: {personagem.player}</p>
-          <p>Idade: {personagem.idade}</p>
-          <p>Status: {personagem.status}</p>
+        <Link key={index} to={personagem.rota} style={{ textDecoration: "none", color: "inherit" }}>
+          <div className="ficha">
+            <h3>{personagem.nome} ({personagem.codinome})</h3>
+            <p>Player: {personagem.player}</p>
+            <p>Idade: {personagem.idade}</p>
+            <p>Status: {personagem.status}</p>
+            <p>Habilidade: {personagem.habilidade}</p>
 
-          <h4>Atributos</h4>
-          <ul>
-            {Object.entries(personagem.atributos).map(([chave, valor]) => (
-              <li key={chave}>
-                {chave}: {valor}{" "}
-                {personagem.bonusAnomalo && (chave === "Forca" || chave === "Resistencia") ? "(+50% bônus Anômalo)" : ""}
-              </li>
-            ))}
-          </ul>
+            <h4>Atributos</h4>
+            <ul>
+              {Object.entries(personagem.atributos).map(([chave, valor]) => (
+                <li key={chave}>
+                  {chave}: {valor}
+                  {personagem.bonusAnomalo &&
+                  (chave === "Força" || chave === "Resistencia")
+                    ? " (+50% Anômalo)"
+                    : ""}
+                </li>
+              ))}
+            </ul>
 
-          <p>Vida calculada: {calcularVida(personagem)}</p>
-          <p>Carga Anômala Máxima: {calcularCargaAnomala(personagem).toFixed(2)}</p>
-        </div>
+            <p>Vida: {calcularVida(personagem)}</p>
+            <p>Carga Anômala: {calcularCargaAnomala(personagem).toFixed(2)}</p>
+          </div>
+        </Link>
       ))}
 
-      {/* TESTE NORMAL */}
-      <h4>Dados de Atributo</h4>
+      {/* TESTE */}
+      <h4>Teste de Atributo</h4>
+
       <div>
-        <label>
-          Personagem:
-          <select
-            value={testeInput.personagemIndex}
-            onChange={(e) => setTesteInput({ ...testeInput, personagemIndex: Number(e.target.value) })}
-          >
-            {personagens.map((p, i) => (
-              <option key={i} value={i}>
-                {p.player}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          value={testeInput.personagemIndex}
+          onChange={(e) =>
+            setTesteInput({ ...testeInput, personagemIndex: Number(e.target.value) })
+          }
+        >
+          {personagens.map((p, i) => (
+            <option key={i} value={i}>{p.player}</option>
+          ))}
+        </select>
 
-        <label>
-          Atributo:
-          <select
-            value={testeInput.atributo}
-            onChange={(e) => setTesteInput({ ...testeInput, atributo: e.target.value as keyof Atributos })}
-          >
-            {Object.keys(personagens[testeInput.personagemIndex].atributos).map((attr) => (
-              <option key={attr} value={attr}>
-                {attr}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          value={testeInput.atributo}
+          onChange={(e) =>
+            setTesteInput({ ...testeInput, atributo: e.target.value as keyof Atributos })
+          }
+        >
+          {Object.keys(personagens[testeInput.personagemIndex].atributos).map((attr) => (
+            <option key={attr} value={attr}>{attr}</option>
+          ))}
+        </select>
 
-        <label>
-          VN:
-          <input
-            type="number"
-            value={testeInput.VN}
-            onChange={(e) => setTesteInput({ ...testeInput, VN: Number(e.target.value) })}
-          />
-        </label>
+        <input
+          type="number"
+          value={testeInput.VN}
+          onChange={(e) =>
+            setTesteInput({ ...testeInput, VN: Number(e.target.value) })
+          }
+        />
 
         <button
           onClick={() => {
@@ -261,7 +267,10 @@ export default function Personagens() {
               testeInput.atributo,
               testeInput.VN
             );
-            setResultadoTeste({ personagem: personagens[testeInput.personagemIndex].player, ...res });
+            setResultadoTeste({
+              personagem: personagens[testeInput.personagemIndex].player,
+              ...res,
+            });
           }}
         >
           Testar
@@ -270,11 +279,12 @@ export default function Personagens() {
 
       {resultadoTeste && (
         <div className="resultado">
-          <h5>Resultado do Teste - {resultadoTeste.personagem}</h5>
-          <p>Fórmula usada: {resultadoTeste.formulaElement}</p>
-          <p>Valor final: {resultadoTeste.valorFinal.toFixed(2)}</p>
+          <h5>Resultado - {resultadoTeste.personagem}</h5>
+
+          <p>{resultadoTeste.formulaElement}</p>
+
           <p>
-            Sucesso:{" "}
+            Sucesso?{" "}
             <span className={resultadoTeste.sucesso ? "sucesso" : "falha"}>
               {resultadoTeste.sucesso ? "SIM" : "NÃO"}
             </span>
@@ -283,35 +293,30 @@ export default function Personagens() {
       )}
 
       {/* REFORÇO */}
-      <h4>Dados de Reforço</h4>
-      <div>
-        <label>
-          Personagem:
-          <select
-            value={reforcoInput.personagemIndex}
-            onChange={(e) => setReforcoInput({ ...reforcoInput, personagemIndex: Number(e.target.value) })}
-          >
-            {personagens.map((p, i) => (
-              <option key={i} value={i}>
-                {p.player}
-              </option>
-            ))}
-          </select>
-        </label>
+      <h4>Reforço</h4>
 
-        <label>
-          Atributo:
-          <select
-            value={reforcoInput.atributo}
-            onChange={(e) => setReforcoInput({ ...reforcoInput, atributo: e.target.value as keyof Atributos })}
-          >
-            {Object.keys(personagens[reforcoInput.personagemIndex].atributos).map((attr) => (
-              <option key={attr} value={attr}>
-                {attr}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div>
+        <select
+          value={reforcoInput.personagemIndex}
+          onChange={(e) =>
+            setReforcoInput({ ...reforcoInput, personagemIndex: Number(e.target.value) })
+          }
+        >
+          {personagens.map((p, i) => (
+            <option key={i} value={i}>{p.player}</option>
+          ))}
+        </select>
+
+        <select
+          value={reforcoInput.atributo}
+          onChange={(e) =>
+            setReforcoInput({ ...reforcoInput, atributo: e.target.value as keyof Atributos })
+          }
+        >
+          {Object.keys(personagens[reforcoInput.personagemIndex].atributos).map((attr) => (
+            <option key={attr} value={attr}>{attr}</option>
+          ))}
+        </select>
 
         <button
           onClick={() => {
@@ -319,7 +324,10 @@ export default function Personagens() {
               personagens[reforcoInput.personagemIndex],
               reforcoInput.atributo
             );
-            setResultadoReforco({ personagem: personagens[reforcoInput.personagemIndex].player, ...res });
+            setResultadoReforco({
+              personagem: personagens[reforcoInput.personagemIndex].player,
+              ...res,
+            });
           }}
         >
           Aplicar Reforço
@@ -328,9 +336,8 @@ export default function Personagens() {
 
       {resultadoReforco && (
         <div className="resultado">
-          <h5>Resultado do Reforço - {resultadoReforco.personagem}</h5>
-          <p>Fórmula usada: {resultadoReforco.formulaElement}</p>
-          <p>Chance final: {resultadoReforco.chanceFinal.toFixed(2)}</p>
+          <h5>Reforço - {resultadoReforco.personagem}</h5>
+          <p>{resultadoReforco.formulaElement}</p>
         </div>
       )}
     </div>

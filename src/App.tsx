@@ -1,15 +1,20 @@
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import './App.css';
+import { HashRouter, Routes, Route, NavLink } from "react-router-dom";
+import "./App.css";
 
-import Inicio from './pages/Inicio';
-import Sistema from './pages/Sistema';
-import Arquivo from './pages/Arquivo';
-import Personagens from './pages/Personagens';
-import Anomalos from './pages/Anomalos';
+import Inicio from "./pages/Inicio";
+import Sistema from "./pages/Sistema";
+import Arquivo from "./pages/Arquivo";
+import Personagens from "./pages/Personagens";
+import Anomalos from "./pages/Anomalos";
+
+import Bryan from "./pages/personagens/Bryan";
+import Leticia from "./pages/personagens/Letícia";
+import Pedro from "./pages/personagens/Pedro";
+import Nana from "./pages/personagens/Nana";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <header className="banner">
         <h1>RPG Operação Maré Cinza</h1>
 
@@ -33,8 +38,6 @@ function App() {
           <NavLink to="/personagens">
             Personagens
           </NavLink>
-
-          
         </nav>
       </header>
 
@@ -45,9 +48,15 @@ function App() {
           <Route path="/arquivo" element={<Arquivo />} />
           <Route path="/personagens" element={<Personagens />} />
           <Route path="/anomalos" element={<Anomalos />} />
+
+          {/* Rotas dos personagens */}
+          <Route path="/bryan" element={<Bryan />} />
+          <Route path="/leticia" element={<Leticia />} />
+          <Route path="/pedro" element={<Pedro />} />
+          <Route path="/nana" element={<Nana />} />
         </Routes>
       </main>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
