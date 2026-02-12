@@ -1,6 +1,4 @@
-/* ============================= */
-/* RESET */
-/* ============================= */
+
 
 * {
   margin: 0;
@@ -8,10 +6,8 @@
   box-sizing: border-box;
 }
 
-/* ============================= */
-/* BASE */
-/* ============================= */
 
+/* BASE */
 html, body, #root {
   width: 100%;
   min-height: 100%;
@@ -27,10 +23,8 @@ html, body, #root {
   min-height: 100vh;
 }
 
-/* ============================= */
-/* BANNER + NAVEGAÇÃO */
-/* ============================= */
 
+/* BANNER E NAVBAR */
 .banner {
   width: 100%;
   padding: 28px 0 20px 0;
@@ -69,10 +63,8 @@ html, body, #root {
   background-color: #5c7cfa;
 }
 
-/* ============================= */
-/* CORPO */
-/* ============================= */
 
+/* CORPO */
 .body {
   flex: 1;
   width: 100%;
@@ -81,10 +73,8 @@ html, body, #root {
   padding: 50px 20px;
 }
 
-/* ============================= */
-/* CONTEÚDO FLUÍDO */
-/* ============================= */
 
+/* PAGES */
 .page {
   width: 100%;
   max-width: 900px;
@@ -128,10 +118,8 @@ em {
   color: #b0b8ff;
 }
 
-/* ============================= */
-/* Ficha de personagem (como era antes) */
-/* ============================= */
 
+/* FCIHA DE PERSONAGEM */
 .ficha {
   background: linear-gradient(145deg, #14141c, #111118);
   border: 1px solid #2c2c38;
@@ -142,28 +130,24 @@ em {
   position: relative;
 }
 
-/* Hover elegante */
 .ficha:hover {
   border-color: #5c7cfa;
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Título */
 .ficha h3 {
   font-size: 1.4rem;
   margin-bottom: 12px;
   color: #ffffff;
 }
 
-/* Informações básicas */
 .ficha p {
   margin-bottom: 6px;
   color: #bfc4ff;
   font-size: 0.95rem;
 }
 
-/* Separação de seção */
 .ficha h4 {
   margin-top: 18px;
   margin-bottom: 10px;
@@ -173,7 +157,6 @@ em {
   padding-bottom: 4px;
 }
 
-/* Lista de atributos */
 .ficha ul {
   list-style: none;
   padding-left: 0;
@@ -191,15 +174,12 @@ em {
   color: #d6d6ff;
 }
 
-/* Vida e Carga */
 .ficha > p:last-of-type {
   margin-top: 6px;
 }
 
-/* ============================= */
-/* ÁREA DOS CÁLCULOS (horizontal com caixa) */
-/* ============================= */
 
+/* CALCULOS */
 .page h4 + div {
   display: flex;
   flex-wrap: wrap;
@@ -212,7 +192,6 @@ em {
   border-radius: 8px;
 }
 
-/* Labels */
 .page h4 + div label {
   display: flex;
   align-items: center;
@@ -221,7 +200,6 @@ em {
   color: #bdbddb;
 }
 
-/* Inputs */
 .page select,
 .page input[type="number"] {
   padding: 6px 10px;
@@ -256,10 +234,8 @@ em {
 }
 
 
-/* ============================= */
-/* Resultado */
-/* ============================= */
 
+/* RRESULTADOS */
 .resultado {
   background-color: #1a1a24;
   border: 1px solid #2c2c38;
@@ -274,7 +250,6 @@ em {
   color: #1e90ff;
   font-weight: bold;
 }
-
 
 .resultado p {
   margin-bottom: 6px;
@@ -295,10 +270,8 @@ em {
   font-weight: bold;
 }
 
-/* ============================= */
-/* MAPA */
-/* ============================= */
 
+/* MAPA */
 .mapa-instalacao {
   width: 100%;
   height: auto;
@@ -314,10 +287,8 @@ em {
   border-color: #5c7cfa;
 }
 
-/* ============================= */
-/* FICHA INDIVIDUAL */
-/* ============================= */
 
+/* FICHA INDIVIDUAL */
 .personagem-ficha {
   max-width: 1200px;
   margin: 50px auto;
@@ -340,7 +311,6 @@ em {
 }
 
 /* ================= TÍTULO ================= */
-
 .personagem-ficha h2 {
   grid-area: titulo;
   text-align: center;

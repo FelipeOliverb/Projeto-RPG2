@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import Retalho from "./imagens/Retalho.png"; // ✅ Importando corretamente
 
 export default function Bryan() {
-  // =============================
+
   // ATRIBUTOS BASE
-  // =============================
   const atributos = {
     forca: 180,
     agilidade: 140,
@@ -15,25 +14,20 @@ export default function Bryan() {
     controle: 150
   };
 
-  // =============================
+ 
   // CÁLCULOS BASE
-  // =============================
   const resistenciaFinal = atributos.resistencia * 1.5;
   const vidaMax = Math.floor(resistenciaFinal * 2);
   const cargaMax = Math.floor(150 + atributos.resistencia / 2);
 
-  // =============================
-  // ESTADOS DINÂMICOS
-  // =============================
   const [vida, setVida] = useState(vidaMax);
   const [carga, setCarga] = useState(cargaMax);
   const [atributoSelecionado, setAtributoSelecionado] = useState("forca");
   const [resultado, setResultado] = useState<string | null>(null);
   const [valorCustom, setValorCustom] = useState(10);
 
-  // =============================
+
   // CONTROLE VIDA
-  // =============================
   function alterarVida(valor: number) {
     setVida(prev => {
       const novo = prev + valor;
@@ -43,9 +37,7 @@ export default function Bryan() {
     });
   }
 
-  // =============================
   // CONTROLE CARGA
-  // =============================
   function alterarCarga(valor: number) {
     setCarga(prev => {
       const novo = prev + valor;
@@ -55,9 +47,7 @@ export default function Bryan() {
     });
   }
 
-  // =============================
   // ROLAGEM NORMAL
-  // =============================
   function rolarNormal() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const d100 = Math.floor(Math.random() * 100) + 1;
@@ -67,9 +57,7 @@ export default function Bryan() {
     setResultado(`Normal → ${valorAtributo} + (${d100}/2 = ${metade}) = ${total}`);
   }
 
-  // =============================
   // ROLAGEM COM REFORÇO
-  // =============================
   function rolarReforco() {
     const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const dadoMax = Math.floor(atributos.reforcar / 2);
@@ -95,14 +83,8 @@ export default function Bryan() {
             alt="Henrique Vasques (Retalho)" 
             
         />
-        </div>
-
-        {/* TÍTULO */}
-        
-
-        
-
-        {/* DEMAIS INFORMAÇÕES */}
+        </div>      
+       
         <div className="personagem-ficha">
             {/* BOTÃO VOLTAR */}
         <Link to="/personagens" className="voltar-btn" style={{ display: "block", textAlign: "center", marginBottom: "20px" }}>

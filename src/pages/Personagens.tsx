@@ -2,9 +2,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-// =========================
 // Tipagens
-// =========================
 type Atributos = {
   Força: number;
   Agilidade: number;
@@ -41,9 +39,8 @@ type ResultadoReforco = {
   formulaElement: ReactNode;
 };
 
-// =========================
+
 // Componente
-// =========================
 export default function Personagens() {
   const [personagens] = useState<Personagem[]>([
     {
@@ -106,25 +103,21 @@ export default function Personagens() {
   const [resultadoTeste, setResultadoTeste] = useState<ResultadoTeste | null>(null);
   const [resultadoReforco, setResultadoReforco] = useState<ResultadoReforco | null>(null);
 
-  // =========================
+
   // VIDA
-  // =========================
   const calcularVida = (personagem: Personagem): number => {
     let resistencia = personagem.atributos.Resistencia;
     if (personagem.bonusAnomalo) resistencia *= 1.5;
     return resistencia * 2;
   };
 
-  // =========================
+
   // CARGA
-  // =========================
   const calcularCargaAnomala = (personagem: Personagem): number => {
     return personagem.atributos.ControleAnomalo + personagem.atributos.Resistencia / 2;
   };
 
-  // =========================
-  // TESTE NORMAL
-  // =========================
+  // TESTE NORMAL --------------------------------
   const testeAtributo = (
     personagem: Personagem,
     atributo: keyof Atributos,
@@ -161,9 +154,9 @@ export default function Personagens() {
     return { dado, valorFinal, sucesso: valorFinal >= VN, formulaElement };
   };
 
-  // =========================
-  // REFORÇO
-  // =========================
+
+  // REFORÇO --------------------------------
+
   const usarReforco = (
     personagem: Personagem,
     atributo: keyof Atributos
