@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Retalho from "./imagens/Retalho.png"; // ✅ Importando corretamente
 
 export default function Bryan() {
-
   // =============================
   // ATRIBUTOS BASE
   // =============================
@@ -35,7 +35,7 @@ export default function Bryan() {
   // CONTROLE VIDA
   // =============================
   function alterarVida(valor: number) {
-    setVida((prev) => {
+    setVida(prev => {
       const novo = prev + valor;
       if (novo < 0) return 0;
       if (novo > vidaMax) return vidaMax;
@@ -47,7 +47,7 @@ export default function Bryan() {
   // CONTROLE CARGA
   // =============================
   function alterarCarga(valor: number) {
-    setCarga((prev) => {
+    setCarga(prev => {
       const novo = prev + valor;
       if (novo < 0) return 0;
       if (novo > cargaMax) return cargaMax;
@@ -59,26 +59,19 @@ export default function Bryan() {
   // ROLAGEM NORMAL
   // =============================
   function rolarNormal() {
-    const valorAtributo =
-      atributos[atributoSelecionado as keyof typeof atributos];
-
+    const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const d100 = Math.floor(Math.random() * 100) + 1;
     const metade = Math.floor(d100 / 2);
-
     const total = valorAtributo + metade;
 
-    setResultado(
-      `Normal → ${valorAtributo} + (${d100}/2 = ${metade}) = ${total}`
-    );
+    setResultado(`Normal → ${valorAtributo} + (${d100}/2 = ${metade}) = ${total}`);
   }
 
   // =============================
   // ROLAGEM COM REFORÇO
   // =============================
   function rolarReforco() {
-    const valorAtributo =
-      atributos[atributoSelecionado as keyof typeof atributos];
-
+    const valorAtributo = atributos[atributoSelecionado as keyof typeof atributos];
     const dadoMax = Math.floor(atributos.reforcar / 2);
 
     if (dadoMax <= 0) {
@@ -87,127 +80,86 @@ export default function Bryan() {
     }
 
     const dado = Math.floor(Math.random() * dadoMax) + 1;
-
     const total = valorAtributo + dado;
 
-    setResultado(
-      `Reforço → ${valorAtributo} + (d${dadoMax} = ${dado}) = ${total}`
-    );
+    setResultado(`Reforço → ${valorAtributo} + (d${dadoMax} = ${dado}) = ${total}`);
   }
 
   return (
-    <div className="personagem-ficha">
-
-      <Link to="/personagens" className="voltar-btn">
-        ← Voltar
-      </Link>
-
-      <h2>Henrique Vasques (Retalho)</h2>
-
-      {/* STATUS ATUAL */}
-      <div className="info-bloco">
-        <p><strong>Vida:</strong> {vida} / {vidaMax}</p>
-        <p><strong>Carga Anômala:</strong> {carga} / {cargaMax}</p>
-        <p><strong>Habilidade:</strong> Fator de Cura</p>
-        
-      </div>
-
-      {/* ATRIBUTOS */}
-
-      <ul className="atributos-grid">
-        <li>Força: {atributos.forca}</li>
-        <li>Agilidade: {atributos.agilidade}</li>
-        <li>Resistência: {atributos.resistencia}</li>
-        <li>Mira: {atributos.mira}</li>
-        <li>Reforçar: {atributos.reforcar}</li>
-        <li>Controle: {atributos.controle}</li>
-      </ul>
-
-      {/* ============================= */}
-      {/* CONTROLE - AJUSTE PRIMEIRO */}
-      {/* ============================= */}
-
-      <div className="controle-bloco">
-
-        {/* AJUSTAR VIDA / CARGA AGORA FICA EM CIMA */}
-        <h3> Ajustar Vida / Carga</h3>
-
-        <input
-          type="number"
-          value={valorCustom}
-          onChange={(e) => setValorCustom(Number(e.target.value))}
+    
+    <div className="personagem-completo">
+        <h2 style={{ textAlign: "center" }}>Henrique Vasques (Retalho)</h2>
+        <div className="foto-personagem" >
+        <img 
+            src={Retalho} 
+            alt="Henrique Vasques (Retalho)" 
+            
         />
-
-        <div className="botoes-controle">
-        <button
-            onClick={(e) => {
-            alterarVida(valorCustom);
-            (e.currentTarget as HTMLButtonElement).blur();
-            }}
-        >
-            + Vida
-        </button>
-
-        <button
-            onClick={(e) => {
-            alterarVida(-valorCustom);
-            (e.currentTarget as HTMLButtonElement).blur();
-            }}
-        >
-            - Vida
-        </button>
-
-        <button
-            onClick={(e) => {
-            alterarCarga(valorCustom);
-            (e.currentTarget as HTMLButtonElement).blur();
-            }}
-        >
-            + Carga
-        </button>
-
-        <button
-            onClick={(e) => {
-            alterarCarga(-valorCustom);
-            (e.currentTarget as HTMLButtonElement).blur();
-            }}
-        >
-            - Carga
-        </button>
         </div>
 
+        {/* TÍTULO */}
+        
 
-        <hr />
+        
 
-        {/* ROLAGEM AGORA FICA EMBAIXO */}
-        <h3>Rolagem de Dados</h3>
-
-        <select
-          value={atributoSelecionado}
-          onChange={(e) => setAtributoSelecionado(e.target.value)}
-        >
-          <option value="forca">Força</option>
-          <option value="agilidade">Agilidade</option>
-          <option value="resistencia">Resistência</option>
-          <option value="mira">Mira</option>
-          <option value="controle">Controle</option>
-        </select>
-
-        <div className="botoes-controle">
-          <button onClick={rolarNormal}>
-            Rolagem Normal
-          </button>
-
-          <button onClick={rolarReforco}>
-            Rolagem com Reforço
-          </button>
+        {/* DEMAIS INFORMAÇÕES */}
+        <div className="personagem-ficha">
+            {/* BOTÃO VOLTAR */}
+        <Link to="/personagens" className="voltar-btn" style={{ display: "block", textAlign: "center", marginBottom: "20px" }}>
+        ← Voltar
+        </Link>
+        {/* STATUS ATUAL */}
+        <div className="info-bloco">
+            <p><strong>Vida:</strong> {vida} / {vidaMax}</p>
+            <p><strong>Carga Anômala:</strong> {carga} / {cargaMax}</p>
+            <p><strong>Habilidade:</strong> Fator de Cura</p>
         </div>
 
-        {resultado && (
-          <p className="resultado-dado">{resultado}</p>
-        )}
+        {/* ATRIBUTOS */}
+        <ul className="atributos-grid">
+            <li>Força: {atributos.forca}</li>
+            <li>Agilidade: {atributos.agilidade}</li>
+            <li>Resistência: {atributos.resistencia}</li>
+            <li>Mira: {atributos.mira}</li>
+            <li>Reforçar: {atributos.reforcar}</li>
+            <li>Controle: {atributos.controle}</li>
+        </ul>
 
-      </div>
+        {/* CONTROLE - AJUSTE VIDA / CARGA */}
+        <div className="controle-bloco">
+            <h3>Ajustar Vida / Carga</h3>
+            <input
+            type="number"
+            value={valorCustom}
+            onChange={(e) => setValorCustom(Number(e.target.value))}
+            />
+
+            <div className="botoes-controle">
+            <button onClick={() => alterarVida(valorCustom)}>+ Vida</button>
+            <button onClick={() => alterarVida(-valorCustom)}>- Vida</button>
+            <button onClick={() => alterarCarga(valorCustom)}>+ Carga</button>
+            <button onClick={() => alterarCarga(-valorCustom)}>- Carga</button>
+            </div>
+
+            <hr />
+
+            <h3>Rolagem de Dados</h3>
+            <select value={atributoSelecionado} onChange={(e) => setAtributoSelecionado(e.target.value)}>
+            <option value="forca">Força</option>
+            <option value="agilidade">Agilidade</option>
+            <option value="resistencia">Resistência</option>
+            <option value="mira">Mira</option>
+            <option value="controle">Controle</option>
+            </select>
+
+            <div className="botoes-controle">
+            <button onClick={rolarNormal}>Rolagem Normal</button>
+            <button onClick={rolarReforco}>Rolagem com Reforço</button>
+            </div>
+
+            {resultado && <p className="resultado-dado">{resultado}</p>}
+        </div>
+        </div>
     </div>
-  );
+    );
 }
