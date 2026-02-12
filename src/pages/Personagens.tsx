@@ -59,30 +59,30 @@ export default function Personagens() {
     },
     {
       player: "Letícia",
-      nome: "Super choque",
+      nome: "Yuliya Ivanovich",
       codinome: "Nyx",
-      idade: 30,
+      idade: 24,
       status: "Anômalo",
       habilidade: "Electrificação",
-      atributos: { Força: 120, Agilidade: 180, Resistencia: 150, Mira: 200, Reforçar: 100, ControleAnomalo: 90 },
+      atributos: { Força: 100, Agilidade: 200, Resistencia: 100, Mira: 100, Reforçar: 200, ControleAnomalo: 300 },
       bonusAnomalo: true,
       rota: "/leticia",
     },
     {
       player: "Pedro",
-      nome: "Yuuki Takahashi",
-      codinome: "Yuuki",
-      idade: 35,
+      nome: "Vitor Almeida",
+      codinome: "VETOR",
+      idade: 29,
       status: "Anômalo",
       habilidade: "Controle de Vetores",
-      atributos: { Força: 160, Agilidade: 170, Resistencia: 180, Mira: 150, Reforçar: 140, ControleAnomalo: 130 },
+      atributos: { Força: 130, Agilidade: 160, Resistencia: 130, Mira: 140, Reforçar: 130, ControleAnomalo: 270 },
       bonusAnomalo: true,
       rota: "/pedro",
     },
     {
       player: "Nana",
       nome: "Nana",
-      codinome: "Pipi",
+      codinome: "Pipoca",
       idade: 28,
       status: "Anômalo",
       habilidade: "--",
@@ -186,7 +186,7 @@ export default function Personagens() {
       <>
         SA {SA.toFixed(2)} + d({dadoMaximo}) →{" "}
         <strong>{dadoReforco}</strong> ={" "}
-        {chanceFinal.toFixed(2)}
+        <strong>{chanceFinal.toFixed(2)}</strong>
       </>
     );
 

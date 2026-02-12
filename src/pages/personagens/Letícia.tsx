@@ -102,7 +102,7 @@ export default function Leticia() {
         ← Voltar
       </Link>
 
-      <h2>Super Choque (Nyx)</h2>
+      <h2>Yuliya Ivanovich (Nyx)</h2>
 
       {/* STATUS ATUAL */}
       <div className="info-bloco">

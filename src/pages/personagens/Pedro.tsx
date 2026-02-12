@@ -100,7 +100,7 @@ export default function Pedro() {
         ← Voltar
       </Link>
 
-      <h2>Yuuki Takahashi</h2>
+      <h2>Vitor Almeida (VETOR)</h2>
 
       {/* STATUS ATUAL */}
       <div className="info-bloco">
@@ -151,7 +151,7 @@ export default function Pedro() {
         >
             - Vida
         </button>
-
+        
         <button
             onClick={(e) => {
             alterarCarga(valorCustom);
