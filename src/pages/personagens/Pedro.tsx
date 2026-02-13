@@ -18,7 +18,7 @@ export default function Pedro() {
   // =============================
   // CÁLCULOS BASE
   // =============================
-  const resistenciaFinal = atributos.resistencia * 1.5; // +50% de resistência
+  const resistenciaFinal = atributos.resistencia; 
   const vidaMax = Math.floor(resistenciaFinal * 2);
   const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2);
 

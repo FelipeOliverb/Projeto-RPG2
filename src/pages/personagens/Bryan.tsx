@@ -10,7 +10,7 @@ export default function Bryan() {
   const atributos = {
     forca: 180*1.5,
     agilidade: 140,
-    resistencia: 220,
+    resistencia: 220*1.5,
     mira: 190,
     reforcar: 120,
     controle: 150
@@ -19,7 +19,7 @@ export default function Bryan() {
   // =============================
   // CÁLCULOS BASE
   // =============================
-  const resistenciaFinal = atributos.resistencia * 1.5; // +50% de resistência
+  const resistenciaFinal = atributos.resistencia; 
   const vidaMax = Math.floor(resistenciaFinal * 2);
   const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2);
 
