@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NyxImg from "./imagens/Nyx.png"; // ✅ Importando a imagem
+import NyxImg from "./imagens/Nyx.png"; 
 
 export default function Leticia() {
   // =============================
   // ATRIBUTOS BASE
   // =============================
   const atributos = {
-    forca: 100,
+    forca: 100*1.5,
     agilidade: 200,
-    resistencia: 100,
+    resistencia: 100*1.5,
     mira: 100,
     reforcar: 200,
     controle: 300
@@ -101,9 +101,9 @@ export default function Leticia() {
         </div>
 
         <ul className="atributos-grid">
-          <li>Força: {atributos.forca*1.5}</li>
+          <li>Força: {atributos.forca}</li>
           <li>Agilidade: {atributos.agilidade}</li>
-          <li>Resistência: {atributos.resistencia*1.5}</li>
+          <li>Resistência: {atributos.resistencia}</li>
           <li>Mira: {atributos.mira}</li>
           <li>Reforçar: {atributos.reforcar}</li>
           <li>Controle: {atributos.controle}</li>

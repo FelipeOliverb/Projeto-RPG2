@@ -8,7 +8,7 @@ export default function Bryan() {
   // ATRIBUTOS BASE
   // =============================
   const atributos = {
-    forca: 180,
+    forca: 180*1.5,
     agilidade: 140,
     resistencia: 220,
     mira: 190,
@@ -107,9 +107,9 @@ export default function Bryan() {
             </div>
 
             <ul className="atributos-grid">
-                <li>Força: {atributos.forca*1.5}</li>
+                <li>Força: {atributos.forca}</li>
                 <li>Agilidade: {atributos.agilidade}</li>
-                <li>Resistência: {atributos.resistencia*1.5}</li>
+                <li>Resistência: {atributos.resistencia}</li>
                 <li>Mira: {atributos.mira}</li>
                 <li>Reforçar: {atributos.reforcar}</li>
                 <li>Controle: {atributos.controle}</li>

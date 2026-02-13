@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NanaImg from "./imagens/Nana.png"; 
+import NanaImg from "./imagens/Nana.png";
 
-export default function Nana() {
-
+export default function Leticia() {
   // =============================
   // ATRIBUTOS BASE
   // =============================
   const atributos = {
-    forca: 140,
+    forca: 100*1.5,
     agilidade: 200,
-    resistencia: 170,
-    mira: 160,
-    reforcar: 150,
-    controle: 110
+    resistencia: 100*1.5,
+    mira: 100,
+    reforcar: 200,
+    controle: 300
   };
 
   // =============================
@@ -21,7 +20,7 @@ export default function Nana() {
   // =============================
   const resistenciaFinal = atributos.resistencia * 1.5; // +50% de resistência
   const vidaMax = Math.floor(resistenciaFinal * 2);
-  const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2); // agora usa resistência final
+  const cargaMax = Math.floor(atributos.controle + resistenciaFinal / 2);
 
   // =============================
   // ESTADOS DINÂMICOS
@@ -80,12 +79,16 @@ export default function Nana() {
     setResultado(`Reforço → ${valorAtributo} + (d${dadoMax} = ${dado}) = ${valorAtributo + dado}`);
   }
 
+  // =============================
+  // RENDER
+  // =============================
   return (
     <div className="personagem-completo">
-      <h2>Nana (Eclipse)</h2>
+
+      <h2>Yuliya Ivanovich (Nyx)</h2>
 
       <div className="foto-personagem">
-        <img src={NanaImg} alt="Nana (Eclipse)" />
+        <img src={NanaImg} alt="Nana (Pipoca)" />
       </div>
 
       <div className="personagem-ficha">
@@ -94,13 +97,13 @@ export default function Nana() {
         <div className="info-bloco">
           <p><strong>Vida:</strong> {vida} / {vidaMax}</p>
           <p><strong>Carga Anômala:</strong> {carga} / {cargaMax}</p>
-          <p><strong>Habilidade:</strong> ----</p>
+          <p><strong>Habilidade:</strong> Electrificação</p>
         </div>
 
         <ul className="atributos-grid">
           <li>Força: {atributos.forca}</li>
           <li>Agilidade: {atributos.agilidade}</li>
-          <li>Resistência: {resistenciaFinal}</li> {/* mostra resistência com bônus */}
+          <li>Resistência: {atributos.resistencia}</li>
           <li>Mira: {atributos.mira}</li>
           <li>Reforçar: {atributos.reforcar}</li>
           <li>Controle: {atributos.controle}</li>

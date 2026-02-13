@@ -83,7 +83,7 @@ export default function Personagens() {
       idade: 28,
       status: "Anômalo",
       habilidade: "--",
-      atributos: { Força: 110, Agilidade: 150, Resistencia: 130, Mira: 160, Reforçar: 100, ControleAnomalo: 120 },
+      atributos: { Força: 100, Agilidade: 200, Resistencia: 100, Mira: 100, Reforçar: 200, ControleAnomalo: 300 },
       bonusAnomalo: true,
       rota: "/nana",
     },

@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import VetorImg from "./imagens/Vetor.png"; // ✅ Importando a imagem
+import VetorImg from "./imagens/Vetor.png"; 
 
 export default function Pedro() {
   // =============================
   // ATRIBUTOS BASE
   // =============================
   const atributos = {
-    forca: 130,
+    forca: 130*1.5,
     agilidade: 160,
-    resistencia: 130,
+    resistencia: 130*1.5,
     mira: 140,
     reforcar: 130,
     controle: 270
@@ -100,9 +100,9 @@ export default function Pedro() {
         </div>
 
         <ul className="atributos-grid">
-          <li>Força: {atributos.forca*1.5}</li>
+          <li>Força: {atributos.forca}</li>
           <li>Agilidade: {atributos.agilidade}</li>
-          <li>Resistência: {atributos.resistencia*1.5}</li>
+          <li>Resistência: {atributos.resistencia}</li>
           <li>Mira: {atributos.mira}</li>
           <li>Reforçar: {atributos.reforcar}</li>
           <li>Controle: {atributos.controle}</li>
