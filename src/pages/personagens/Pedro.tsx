@@ -7,12 +7,12 @@ export default function Pedro() {
   // ATRIBUTOS BASE
   // =============================
   const atributos = {
-    forca: 130*1.5,
-    agilidade: 160,
-    resistencia: 130*1.5,
-    mira: 140,
+    forca: 140*1.5,
+    agilidade: 200,
+    resistencia: 100*1.5,
+    mira: 190,
     reforcar: 130,
-    controle: 270
+    controle: 240
   };
 
   // =============================
@@ -84,10 +84,10 @@ export default function Pedro() {
   // =============================
   return (
     <div className="personagem-completo">
-      <h2>Vitor Almeida (VETOR)</h2>
+      <h2>Viktor DeLuca (VETOR)</h2>
 
       <div className="foto-personagem">
-        <img src={VetorImg} alt="Vitor Almeida (VETOR)" />
+        <img src={VetorImg} alt="Viktor DeLuca (VETOR)" />
       </div>
 
       <div className="personagem-ficha">
