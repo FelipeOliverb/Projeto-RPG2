@@ -96,7 +96,7 @@ export default function Pedro() {
         <div className="info-bloco">
           <p><strong>Vida:</strong> {vida} / {vidaMax}</p>
           <p><strong>Carga Anômala:</strong> {carga} / {cargaMax}</p>
-          <p><strong>Habilidade:</strong> Controle de Vetores</p>
+          <p><strong>Habilidade:</strong> Manipulação Vetorial</p>
         </div>
 
         <ul className="atributos-grid">

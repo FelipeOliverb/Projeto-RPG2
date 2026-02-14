@@ -71,7 +71,7 @@ export default function Personagens() {
       codinome: "VETOR",
       idade: 29,
       status: "Anômalo",
-      habilidade: "Controle de Vetores",
+      habilidade: "Manipulação Vetorial",
       atributos: { Força: 140, Agilidade: 200, Resistencia: 100, Mira: 190, Reforçar: 130, ControleAnomalo: 240 },
       bonusAnomalo: true,
       rota: "/pedro",
